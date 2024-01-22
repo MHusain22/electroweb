@@ -1,0 +1,231 @@
+
+.smallcontainer{
+    /* padding-left: 25px;    
+    padding-right: 25px;     */
+    padding: 0px 90px;
+}
+.nava{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.product_container{
+    display: flex;
+    position: relative;
+}
+.products{
+    margin-top: 70px;
+    
+}
+.cen{
+    display: flex;
+    margin-right: 20px;
+    justify-content: center;
+}
+
+.col3 button{
+    margin-left: 24px;
+}
+.col3 h3{
+    margin-left: 24px;
+}
+.col3 h6{
+    margin-left: 24px;
+}
+.col3 h2{
+    margin-left: 24px;
+}
+
+.col3{
+    flex-basis: 33%;
+    
+    margin-bottom: 10px;
+    padding-bottom: 30px;
+    box-shadow: 0 0 20px 0px rgb(0,0,0,0.1);
+    transition: transform 0.5s;
+    position: relative;
+}
+.col3:hover{
+    transform: translateY(-5px);
+    background-color: rgba(0, 0, 0, 0.051);
+    
+}
+.col3 img{
+    padding-top: 20px;
+    width: 370px;
+    height: 400px;
+    margin-left: 20px;
+}
+
+.col3:hover .cbtn{
+    cursor: pointer;
+    opacity: 1;
+    bottom: 19em;
+    transition: 0.5s;
+    
+} 
+
+.cbtn{
+    color: white;
+    background: black;
+    padding: 10px 25px 10px 25px;
+    position: absolute;
+    left: 115px;
+    opacity: 0;    
+}
+
+
+
+
+.ad{
+    background-image: url('../../images/13pro.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    width: 100%;
+    height: 350px;
+    margin: 70px 0px;
+}
+
+.text{
+    padding-top: 120px;
+    color: #fff;
+}
+
+.text button{
+    padding: 10px 25px 10px 25px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+.productcarousel{
+    position: relative;
+    overflow: hidden;
+    padding: 26px;
+}
+.productcontainer{
+    padding: 0 10px;
+    display: flex;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+.productcontainer img{
+    width: 300px;
+    height: 380px;
+    margin: 5px 10px 5px 10px;
+}
+
+.prebtn,.nextbtn{
+    border: none;
+    width: 60px;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.nextbtn{
+    right: 0;
+}
+
+.nextbtn p,.prebtn p{
+    font-size: 50px;
+    background-color: rgba(0,0,0,0.436);
+    box-shadow: 0 0 10px 0px black;
+    border-radius: 50px;
+    cursor: pointer;
+    color: #fff;
+    width: 50px;
+    height: 50px;
+}
+
+.box{
+    background-image: url('../../images/mac.png');
+    background-position: center;
+    background-size: cover;
+    /* background-attachment: fixed; */
+    margin-top: 30px;
+    align-items: center;
+    width: 100%;
+    height: 450px;
+}
+
+
+
+.contain{
+    display: flex;
+    margin-bottom: 70px;
+}
+.text2{
+    padding-top: 120px;
+    color: black;
+}
+
+.text2 button{
+    padding: 13px 30px 13px 30px;
+    cursor: pointer;
+    margin-top: 10px;
+    background-color: black;
+    color: white;
+    border: none;
+}
+
+.cor h3{
+    margin-left: 25px;
+}
+.text,.text2{
+    margin-left: 25px;
+}
+
+
+.cor{
+    box-shadow: 0 0 20px 0px rgb(0,0,0,0.1);
+}
+
+.back{
+    background-image: url('../../images/13pro.png');
+    background-position: center;
+    background-attachment: fixed;
+    background-size:cover;
+    width: 100%;
+    height: 300px;
+    margin-bottom: 70px;
+}
+
+.too{
+    padding-top: 100px;
+    margin-left: 25px;
+}
+
+@media screen and (max-width:1000px) {
+    .contain{
+        flex-direction: column;
+    }
+    .nava{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+    .smallcontainer{
+        padding: 0 20px;
+    }
+    .product_container{
+        width: 100%;
+    }
+    .productcarousel{
+        margin-top: 20px;
+        padding: 0;
+    }
+    .col3{
+        flex-basis: 100%;
+    }
+    .col3 h3{
+        margin: 0;
+    }
+    .col3 img{
+        width: 100%;
+        height: auto;
+        margin-left: 0;
+    }
+}

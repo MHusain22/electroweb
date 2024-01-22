@@ -1,0 +1,52 @@
+.dialog{
+    border: 1px solid black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.stand{
+    background-color: hsl(0, 0%, 90%);
+    border: 1px solid black;
+    box-shadow: 0 0 20px 0px rgb(0,0,0,0.1);
+    display: flex;
+    width: 400px;
+    height: 500px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.stand h2{
+    font-weight: bold;
+    font-size: 30px;
+    padding: 0 10px;
+    cursor: pointer;
+    width: 100px;
+    margin-bottom: 70px;
+}
+
+.stand input{
+    width: 70%;
+    height: 30px;
+    margin: 10px 0;
+    padding: 0 10px;
+    border: 1px solid hsl(0, 0,90%);
+}
+
+.logbtn{
+    width: 70%;
+    border: none;
+    cursor: pointer;
+    padding: 10px 20px 10px 20px;
+    background-color: black;
+    color: white;
+    border-radius: 3px;
+    margin-bottom: 70px;
+    
+}
+
+@media screen and (max-width:600px) {
+      
+}

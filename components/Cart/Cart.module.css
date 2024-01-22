@@ -1,0 +1,147 @@
+.car{
+    margin-bottom: 10em;
+    display: flex;
+    
+}
+
+.head{
+    margin-top: 10em;
+}
+.rowh{
+    display: flex;
+    justify-content: space-around;  
+}
+.row{
+    display: flex;
+    justify-content: space-between;  
+    margin: 70px;
+   
+
+}
+.column{
+    flex-basis: 50%;
+    padding: 20px 0px;
+    height: 400px;
+    background-color: hsl(0, 0%, 90%);
+    height: 100%;
+}
+
+.column ul{
+    margin-left: 20px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    
+}
+
+.Table{
+    width: 100%;
+    /* height: 100%; */
+    text-align: left;
+    padding-right: 30px;
+    border: 1px solid hsl(0, 0%, 90%);
+}
+
+.Table td{
+    padding: 5px;
+}
+
+.column button{
+    background-color: black;
+    color: white;
+    width: 90%;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1em;
+    margin-top: 10px;
+    padding: 13px 20px 13px 20px;
+}
+.btn{
+    background-color: black;
+    color: white;
+    /* width: 90%; */
+    cursor: pointer;
+
+    font-size: 1em;
+    padding: 13px 20px 13px 20px;
+}
+.column button:hover{
+    background-color: white;
+    color: black;
+}
+.rn{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+}
+.cn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.pd{
+    display: flex;
+    align-items: center;
+}
+.but{  
+    text-align: center;
+    height: 40px;
+    width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0px auto;
+    background-color: hsl(0, 0%, 90%);
+    padding: 3px;
+}
+
+.but span{
+    margin: 8px 0px 10px 0px;
+    cursor: pointer;
+    font-size: 19px;
+}
+
+.but .num{   
+    padding: 0px 10px;
+    border-right: 2px solid rgba(0,0,0,0.2);
+    border-left: 2px solid rgba(0,0,0,0.2);
+}
+
+
+.item{
+    background-color: black;
+    color: white;
+    padding: 1px;
+    border-radius: 50%;
+    position: absolute;
+    margin:0px 0px 12px -11px;
+    
+}
+
+.subtotal{
+    margin-left: 20px;
+    font-weight: bold;
+    font-size: 30px;
+    position: relative;
+}
+.fl{
+    display: flex;
+    justify-content: space-between;
+}
+
+.price{
+    margin-right: 1.7em;
+    font-size: 23px;
+}
+.column ul{
+    line-height: 32px;
+}
+.column ul li{
+    list-style: none;
+}
+
+@media screen and (max-width:600px) {
+    .row{
+        flex-direction: column;
+    }
+}

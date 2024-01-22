@@ -1,0 +1,33 @@
+
+.smallcontainer{
+    max-width: 1300px;
+    margin: auto;
+    padding-left:5px;
+    padding-right:5px;
+}
+
+.row{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.col{
+    margin-top: 4em;
+    flex-basis: 25%;
+    text-align: center;
+    padding: 40px 20px;
+    box-shadow: 0 0 20px 0px rgb(0,0,0,0.1);
+    transition: transform 0.5s;
+}
+
+.col:hover{
+    transform: translateY(-5px);
+}
+@media screen and (max-width:500px) {
+    .col{
+        flex-basis: 50%;
+        padding: 24px;
+    }
+}

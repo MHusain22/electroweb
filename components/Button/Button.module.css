@@ -1,0 +1,16 @@
+.but{
+    text-decoration: none;
+    padding: 15px 40px;
+    background: #fff;
+    color: black;
+    margin-top: 10px;
+    cursor: pointer;
+}
+.butb{
+    text-decoration: none;
+    padding: 15px 40px;
+    background: black;
+    color: white;
+    margin-top: 10px;
+    cursor: pointer;
+}

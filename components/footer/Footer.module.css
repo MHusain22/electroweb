@@ -1,0 +1,83 @@
+.footer {
+  display: flex;
+  justify-content: space-evenly;
+  background-color: #000;
+  color: #8a8a8a;
+  font-size: 14px;
+  padding: 32px;
+  gap: 16px;
+}
+.download_app {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+@media screen and (max-width: 500px) {
+  .footer {
+    flex-direction: column;
+    text-align: center;
+}
+    .fl{
+        display: flex;
+        margin-top: 21px;
+        justify-content: center;
+        gap: 40px;
+    }    
+}
+.footer p {
+    color: #8a8a8a;
+}
+
+.footer h3{
+    color: #fff;
+}
+/* 
+
+.footer_col_1,.footer_col_2,.footer_col_3,.footer_col_4{
+
+}
+
+.footer_col_1{
+    flex-basis: 30%;
+}
+.footer_col_2{ 
+    flex: 1; 
+    text-align: center;
+}
+
+.footer_col_2 img {
+    width: 180px;
+    margin-bottom: 20px;
+}
+
+.footer_col_3,.footer_col_4{
+    flex-basis: 12%;
+    text-align: center;
+    
+}
+
+.app_logo{
+    margin-top: 20px;
+}
+.app_logo img{
+    width: 140px;
+}
+.footer hr{
+    border: none;
+    background-color: #b5b5b5;
+    height: 1px;
+    margin: 20px 0;
+}
+.footer_col_4 ul{
+    list-style: none;
+}
+
+.footer_col_3 ul{
+    list-style: none;
+}
+
+.copyr{
+    text-align: center;
+
+} */

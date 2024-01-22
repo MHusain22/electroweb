@@ -1,0 +1,175 @@
+.shop{
+    margin-top: 4em;
+    display: flex;
+}
+.head{
+    display: flex;
+    justify-content: space-between;
+    margin: 0em 5em;
+    margin-top: 120px;
+    padding-top: 30px;
+}
+/* .head input{
+    padding: 10px 25px 10px 25px;
+} */
+.row{
+    flex-basis: 33%;
+    display: flex;
+    flex-wrap: wrap;
+}
+.leftshop{
+    flex-basis: 30%;
+    /* width: 200px; */
+    border: 1px solid black;
+    /* box-shadow: 0 0 20px 0px rgb(0,0,0,0.1); */
+    width: 100px;
+    height: 600px;
+    margin:0px 0px 0px 5em;
+    padding: 20px;
+}
+.smallcontainer{
+    flex-wrap: wrap;
+    flex-basis: 70%;
+}
+.leftshop ul li{
+    margin: 12px 3px;
+    font-size: 17px;
+    cursor: pointer;
+    
+}
+.leftshop ul li:hover{
+    background-color: hsla(0, 0%, 90%, 0.839);
+    border-radius: 5px;
+}
+.leftshop h3{
+    margin: 20px 0px;
+}
+.compselect{
+    padding: 7px 10px;
+    height: 50px;
+    background-color: hsla(0, 0%, 90%, 0.839);
+    outline: none;
+    border: 1px solid black;
+    font-size: 13px;
+    font-weight: 600;
+}
+.fl{
+    display: flex;
+    flex-direction: column;
+}
+.coln{
+    flex-basis: 33%;
+    margin-bottom: 20px;
+    padding-bottom: 30px;
+    box-shadow: 0 0 20px 0px rgb(0,0,0,0.1);
+    transition: transform 0.5s;
+    position: relative;
+}
+.coln:hover{
+    transform: translateY(-5px);
+    background-color: rgba(0, 0, 0, 0.051);   
+}
+
+.coln img{
+    width: 250px;
+    height: 200px;
+    margin-left: 24px;
+}
+
+.coln h3{
+    margin-left: 24px;
+}
+.coln button{
+    margin-left: 24px;
+}
+.coln h6{
+    margin-left: 24px;
+}
+.coln h2{
+    margin-left: 24px;
+}
+
+
+
+.sortselect{
+    padding: 7px 25px;
+    height: 50px;
+    background-color: hsla(0, 0%, 90%, 0.839);
+    outline: none;
+    border: 1px solid black;
+    font-size: 13px;
+    font-weight: 600;
+}
+.sortselect option{
+    background-color: hsla(0, 0%, 90%, 0.839);
+    border: none;
+}
+
+.coln:hover .cbtn{
+    cursor: pointer;
+    opacity: 1;
+    bottom: 12em;
+    transition: 0.5s;
+    
+} 
+
+.cbtn{
+    color: white;
+    background: black;
+    padding: 10px 25px 10px 25px;
+    position: absolute;
+    left: 59px;
+    opacity: 0;    
+}
+
+.btn{
+    color: #fff;
+    background-color: black;
+    margin: 20px 0px;
+    padding: 10px 40px;
+    cursor: pointer;
+
+}
+
+@media screen and (max-width:600px) {
+    .leftshop{
+        margin-left: 10px;
+        flex-basis: 37%;
+        height: 100vh;
+    }
+    .smallcontainer{
+        flex-basis: 60%;
+        
+    }
+    .head{
+        width: 100%;
+        margin-top: 10em;
+        justify-content: space-evenly;
+    
+        /* margin: 10em 0em; */
+    }
+    .head h2{
+        margin: 0px 25px;
+    }
+    .row{
+        flex-basis: 50%;
+    }
+    .shop{
+        display: flex;
+        justify-content: space-between;
+        width:140%;
+    }
+    .cbtn{
+        visibility:hidden;
+    }
+    .leftshop h3{
+        font-size: 25px;
+    }
+    .leftshop ul li{
+        font-size: 20px;
+    }
+    .coln img{
+        width: 150px;
+        height: auto;
+    }
+}
