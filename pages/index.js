@@ -1,4 +1,3 @@
-import React from 'react';
 import Header from '@/components/header/Header';
 import Card from '@/components/Cards/Cards';
 import Products from '@/components/products/Products';
