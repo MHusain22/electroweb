@@ -15,12 +15,7 @@ html,body{
     padding: 0px;
     overflow-x: hidden;
 }
-@media screen and (max-width:500px) {
-  body{
-    
-    /* margin-right: -60px; */
-  }
-}
+
 a {
   color: inherit;
   text-decoration: none;

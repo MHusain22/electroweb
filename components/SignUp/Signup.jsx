@@ -23,24 +23,31 @@ const Signup = () => {
     });
   };
 
-  const registerHandler = (e) => {
+  const registerHandler = async (e) => {
     e.preventDefault();
     const { email, password, username } = user;
-    console.log(user);
+    
     if (email.length > 0 && password.length > 0 && username.length > 0) {
       // alert("correct");
-      axios
-        .post("http://localhost:9000/signup", user) //passing the data
-        .then((res) => {
-          if (res.data == "User already registered") {
-            toast.success("User already registered");
-            console.log(res);
-          } else {
-            toast.success("SignUp succesfull");
-            router.push("/");
-            console.log(res);
-          }
-        });
+      try {
+        const response = await axios.post('/api/users/signup', user) //passing the data
+        console.log("Signup Success",response.data);
+        router.push("/login");
+        toast.success("SignUp succesfull");
+      } catch (error) {
+        toast.error("User Does not exist");
+        console.log("Signup failed",error.message);
+      }
+
+        // .then((res) => {
+        //   if (res.data == "User already registered") {
+        //     toast.success("User already registered");
+        //     console.log(res);
+        //   } else {
+        //     router.push("/");
+        //     console.log(res);
+        //   }
+        // });
     } else {
       toast.error("Invalid Credentials"); 
     }

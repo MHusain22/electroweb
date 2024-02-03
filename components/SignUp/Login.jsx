@@ -22,25 +22,24 @@ const Login = () => {
     });
   };
 
-  const registerHandler = (e) => {
+  const registerHandler = async (e) => {
     e.preventDefault();
     const { email, password } = user;
-    console.log(user);
+    
     if (email.length > 0 && password.length > 0) {
       // alert("correct");
-      axios
-        .post("http://localhost:9000/login", user) //passing the data
-        .then((res) => {
-          if (res.data == "User not is a registered") {
-            toast.error("User is not registered");
-            router.push("/signup");
-            console.log(res);
-          } else {
-            toast.success("Login Successfull");
-            router.push("/");
-            console.log(res);
-          }
-        });
+      try {
+        const response = await axios.post("/api/users/login", user); //passing the data
+        console.log("login Success", response.data);
+        router.push("/");
+        toast.success("login succesfull");
+      } catch (error) {
+        toast.error("User Does not exist");
+        console.log("login failed", error.message);
+      }
+    }
+    else{
+      toast.error("User does not exist");
     }
   };
 
