@@ -48,5 +48,8 @@
 }
 
 @media screen and (max-width:600px) {
-      
+      .stand{
+        width: 320px;
+        height: 500px;
+      }
 }
