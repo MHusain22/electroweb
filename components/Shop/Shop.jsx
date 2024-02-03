@@ -42,7 +42,7 @@ const Shop = () => {
           placeholder="Search"
           onChange={handleSearchChange}
         />
-        <h2 style={{ fontSize:"2em"}}>Products</h2>
+        <h2 style={{ fontSize:"2em"}}>Prod</h2>
         
           <select
             onClick={(e) => usedispatch(setSortBy(e.target.value))}

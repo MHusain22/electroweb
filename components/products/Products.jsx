@@ -92,7 +92,7 @@ const Products = () => {
             </button>
 
             <div id="productcontainer" className={classes.productcontainer}>
-              {ProductData.toReversed().map((data) => (
+              {ProductData.map((data) => (
                 <div className={classes.cor}>
                   <Image src={data.Image} alt="" />
                   <h3>{data.name}</h3>
