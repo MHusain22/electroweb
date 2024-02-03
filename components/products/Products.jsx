@@ -40,11 +40,13 @@ const Products = () => {
               <div className={classes.col3} key={data.id}>
                 <div className={classes.cen}>
                   <Link href={`${data.id}`}>
-                    <Image
-                      className={classes.imgg}
-                      src={data.Image}
-                      alt="image"
-                    />
+                    
+                      <Image
+                        className={classes.imgg}
+                        src={data.Image}
+                        alt="image"
+                      />
+                   
                   </Link>
                 </div>
                 <Link href="/cart">
@@ -55,7 +57,7 @@ const Products = () => {
                     Add To Cart
                   </button>
                 </Link>
-                <h6>{data.type}</h6>
+                <h6>{data.category}</h6>
                 <h3>{data.name}</h3>
                 <h3>{`$${data.price}`}</h3>
               </div>
