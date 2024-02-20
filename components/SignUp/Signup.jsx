@@ -26,41 +26,38 @@ const Signup = () => {
   const registerHandler = async (e) => {
     e.preventDefault();
     const { email, password, username } = user;
-    
+
     if (email.length > 0 && password.length > 0 && username.length > 0) {
       // alert("correct");
       try {
-        const response = await axios.post('/api/users/signup', user) //passing the data
+        const response = await axios.post("/api/users/signup", user); //passing the data
         // const response = await axios.post('https://electroweb.vercel.app/api/users/signup', user) //passing the data
 
-        console.log("Signup Success",response.data);
+        console.log("Signup Success", response.data);
         router.push("/login");
         toast.success("SignUp succesfull");
       } catch (error) {
         toast.error("Signup failed");
-        console.log("Signup failed",error.message);
+        console.log("Signup failed", error.message);
       }
 
-        // .then((res) => {
-        //   if (res.data == "User already registered") {
-        //     toast.success("User already registered");
-        //     console.log(res);
-        //   } else {
-        //     router.push("/");
-        //     console.log(res);
-        //   }
-        // });
+      // .then((res) => {
+      //   if (res.data == "User already registered") {
+      //     toast.success("User already registered");
+      //     console.log(res);
+      //   } else {
+      //     router.push("/");
+      //     console.log(res);
+      //   }
+      // });
     } else {
-      toast.error("Invalid Credentials"); 
+      toast.error("Invalid Credentials");
     }
   };
 
   return (
     <div className={classes.dialog}>
-      <Toaster
-  position="top-right"
-  reverseOrder={false}
-/>
+      <Toaster position="top-right" reverseOrder={false} />
       <form method="POST" onSubmit={registerHandler} className={classes.stand}>
         <h1>SignUp</h1>
         <input

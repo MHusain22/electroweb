@@ -12,25 +12,30 @@
   flex-direction: column;
   align-items: flex-start;
 }
+.fl {
+  display: flex;
+  flex-direction: row;
+  gap: 60px;
+}
 
 @media screen and (max-width: 500px) {
   .footer {
     flex-direction: column;
     text-align: center;
-}
-    .fl{
-        display: flex;
-        margin-top: 21px;
-        justify-content: center;
-        gap: 40px;
-    }    
+  }
+  .fl {
+    display: flex;
+    margin-top: 21px;
+    justify-content: center;
+    gap: 40px;
+  }
 }
 .footer p {
-    color: #8a8a8a;
+  color: #8a8a8a;
 }
 
-.footer h3{
-    color: #fff;
+.footer h3 {
+  color: #fff;
 }
 /* 
 
