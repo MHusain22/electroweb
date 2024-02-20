@@ -30,8 +30,8 @@ const Signup = () => {
     if (email.length > 0 && password.length > 0 && username.length > 0) {
       // alert("correct");
       try {
-        // const response = await axios.post('/api/users/signup', user) //passing the data
-        const response = await axios.post('https://electroweb.vercel.app/api/users/signup', user) //passing the data
+        const response = await axios.post('/api/users/signup', user) //passing the data
+        // const response = await axios.post('https://electroweb.vercel.app/api/users/signup', user) //passing the data
 
         console.log("Signup Success",response.data);
         router.push("/login");
