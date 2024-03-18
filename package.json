@@ -14,6 +14,7 @@
     "@mui/material": "^5.15.4",
     "@nextui-org/react": "^2.2.9",
     "@reduxjs/toolkit": "^2.0.1",
+    "@stripe/stripe-js": "^3.0.10",
     "@types/styled-components": "^5.1.34",
     "axios": "^1.6.5",
     "bcrypt": "^5.1.1",
