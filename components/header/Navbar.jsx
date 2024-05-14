@@ -5,6 +5,7 @@ import Link from "next/link";
 import cart from "../../images/cart.png";
 import { useSelector } from "react-redux";
 import { IoMenu } from "react-icons/io5";
+import ChatBot from "../ChatBot/ChatBot";
 
 
 const Navbar = () => {
@@ -17,6 +18,7 @@ const Navbar = () => {
   }
 
   return (
+    <>
     <div className={classes.container}>
      
       <div className={classes.logo}>ELECTRO</div>
@@ -62,6 +64,8 @@ const Navbar = () => {
         </div>
       </div>
     </div>
+
+    </>
   );
 };
 

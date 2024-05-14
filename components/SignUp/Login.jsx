@@ -29,7 +29,7 @@ const Login = () => {
     if (email.length > 0 && password.length > 0) {
       // alert("correct");
       try {
-        const response = await axios.post("/api/users/login", user); //passing the data
+        const response = await axios.post("api/users/login", user); //passing the data
         console.log("login Success", response.data);
         router.push("/");
         toast.success("login succesfull");
