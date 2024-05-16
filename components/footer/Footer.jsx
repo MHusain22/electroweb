@@ -36,16 +36,17 @@ const Footer = () => {
           </div>
         </div>
         <p className={classes.copyr}>CopyRight</p>
-      {/* <div className={classes.chatbot}>
-        <iframe
+      <div className={classes.chatbot}>
+        {/* <iframe
           src="https://www.chatbase.co/chatbot-iframe/K_vhNWwE5TH19H3pld0KM"
           title="Chatbot"
           width="100%"
+          
           // style="height: 100%; min-height: 700px"
-          style={{height:"100%"}}
+          style={{height:"200%"}}
           frameborder="0"
-        ></iframe>
-      </div> */}
+        ></iframe> */}
+      </div>
       </div>
     </>
   );

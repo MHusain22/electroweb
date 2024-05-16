@@ -34,10 +34,11 @@ const Login = () => {
         router.push("/");
         toast.success("login succesfull");
       } catch (error) {
-        toast.error("User Does not exist");
+        toast.error("Incorrect Password or Email");
         console.log("login failed", error.message);
       }
     }
+    
     else{
       toast.error("User does not exist");
     }

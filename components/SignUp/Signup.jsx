@@ -30,9 +30,7 @@ const Signup = () => {
     if (email.length > 0 && password.length > 0 && username.length > 0) {
       // alert("correct");
       try {
-        // const response = await axios.post("/api/users/signup", user); //passing the data
         const response = await axios.post('/api/users/signup', user) //passing the data
-
         console.log("Signup Success", response.data);
         router.push("/login");
         toast.success("SignUp succesfull");
@@ -40,16 +38,6 @@ const Signup = () => {
         toast.error("Signup failed");
         console.log("Signup failed", error.message);
       }
-
-      // .then((res) => {
-      //   if (res.data == "User already registered") {
-      //     toast.success("User already registered");
-      //     console.log(res);
-      //   } else {
-      //     router.push("/");
-      //     console.log(res);
-      //   }
-      // });
     } else {
       toast.error("Invalid Credentials");
     }

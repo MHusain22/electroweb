@@ -37,8 +37,10 @@ const Navbar = () => {
             >
               <li>SHOP</li>
             </Link>
+            <Link href="/about">
             <li>ABOUT</li>
-            <li>BLOG</li>
+            
+            </Link>
             <Link
               href="/contact"
               style={{ textDecoration: "none", color: "inherit" }}
