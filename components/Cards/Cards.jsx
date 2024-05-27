@@ -13,7 +13,7 @@ const Card = (props) => {
             <div className={classes.row}>
                 <div className={classes.col}>
                     <Image src={payment} alt="" />
-                    <h3>Safe payment</h3>
+                    <h3>Ekdum Safe payment</h3>
                     <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
                 </div>
                 <div className={classes.col}>
