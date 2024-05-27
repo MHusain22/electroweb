@@ -4,9 +4,11 @@ import axios from "axios"; //to call api
 import { useRouter } from "next/router";
 import toast from "react-hot-toast";
 import { Toaster } from "react-hot-toast";
+import { useDispatch } from "react-redux";
 
 const Signup = () => {
   const router = useRouter();
+  const dispatch = useDispatch();
 
   const [user, setUser] = useState({
     email: "",

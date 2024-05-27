@@ -18,9 +18,7 @@ export default async function handler(req, res) {
     const { email, password } = req.body;
 
     try {
-      // Replace 'YourUserModel' with your actual user model name or logic
       const user = await User.findOne({ email });
-
       if (!user) {
         return res.status(401).json({ error: "User not found" });
       }
@@ -32,7 +30,7 @@ export default async function handler(req, res) {
         return res.status(401).json({ error: 'Invalid password' });
       }
 
-      res.status(200).json({ message: "Login successful" });
+      res.status(200).json({ message: "Login successful",user });
     } catch (error) {
       console.error("Login failed:", error);
       res.status(500).json({ error: "Login failed" });

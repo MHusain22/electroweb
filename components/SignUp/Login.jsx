@@ -4,11 +4,14 @@ import axios from "axios"; //to call api
 import { useRouter } from "next/router";
 import toast from "react-hot-toast";
 import { Toaster } from "react-hot-toast";
+import { useDispatch } from "react-redux";
+import { setUser } from "@/store/slices/authSlice";
 
 const Login = () => {
   const router = useRouter();
+  const dispatch = useDispatch();
 
-  const [user, setUser] = useState({
+  const [user, setuser] = useState({
     email: "",
     password: "",
   });
@@ -16,7 +19,7 @@ const Login = () => {
   const handleChange = (e) => {
     // console.log(e.target.value);
     const { name, value } = e.target;
-    setUser({
+    setuser({
       ...user,
       [name]: value,
     });
@@ -30,7 +33,8 @@ const Login = () => {
       // alert("correct");
       try {
         const response = await axios.post("api/users/login", user); //passing the data
-        console.log("login Success", response.data);
+        console.log("login Success");
+        dispatch(setUser(response.data.user.username));
         router.push("/");
         toast.success("login succesfull");
       } catch (error) {
