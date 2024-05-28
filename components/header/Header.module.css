@@ -53,10 +53,7 @@
   text-align: center;
   display: flex;
 }
-.log {
-  margin-top: 15px;
-  font-size: 17px;
-}
+
 .last a {
   text-decoration: none;
   color: inherit;
@@ -102,6 +99,28 @@
   color: black;
   margin-top: 10px;
   cursor: pointer;
+}
+.profile {
+  display: flex;
+  align-items: center;
+}
+
+.profileImage {
+  border-radius: 50%;
+  margin-right: 8px;
+}
+
+.log{
+  background-color: black;
+  cursor: pointer;
+  padding: 8px 10px;
+  margin-left: 10px;
+  border-radius: 7px;
+}
+.profileSection{
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 @media screen and (max-width: 600px) {

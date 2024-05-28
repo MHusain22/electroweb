@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import classes from "./Signup.module.css";
 import axios from "axios"; //to call api
 import { useRouter } from "next/router";
@@ -6,10 +6,14 @@ import toast from "react-hot-toast";
 import { Toaster } from "react-hot-toast";
 import { useDispatch } from "react-redux";
 import { setUser } from "@/store/slices/authSlice";
+import { signIn, useSession } from "next-auth/react";
 
 const Login = () => {
   const router = useRouter();
   const dispatch = useDispatch();
+  
+  const { data: session, status } = useSession();
+  
 
   const [user, setuser] = useState({
     email: "",
@@ -24,6 +28,16 @@ const Login = () => {
       [name]: value,
     });
   };
+
+  useEffect(() => {
+    if (status === "authenticated") {
+      router.push("/");
+    }
+  }, [status, router]);
+
+  const LoginWthGoogle = () => {
+    signIn("google");
+  }
 
   const registerHandler = async (e) => {
     e.preventDefault();
@@ -75,6 +89,7 @@ const Login = () => {
         <a href="" style={{ textDecoration: "none", color: "inherit" }}>
           Forget password
         </a>
+        <button onClick={LoginWthGoogle}>Login with google</button>
         {/* <p>or sign in with google<span className='gog'><img src={google} width="10%" alt="" /></span></p> */}
       </form>
     </div>
