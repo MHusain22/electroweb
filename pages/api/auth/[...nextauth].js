@@ -10,7 +10,8 @@ export const authOptions = {
         clientSecret:process.env.GOOGLE_CLIENT_SECRET,
     }),
     // ...add more providers here
-  ],
+],
+baseUrl:process.env.NEXTAUTH_URL,
 }
 
 export default NextAuth(authOptions)
