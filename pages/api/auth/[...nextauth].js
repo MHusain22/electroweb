@@ -11,7 +11,13 @@ export const authOptions = {
     }),
     // ...add more providers here
 ],
-baseUrl:process.env.NEXTAUTH_URL,
+pages: {
+  signIn: '/auth/signin',
+  signOut: '/auth/signout',
+  error: '/auth/error', // Error code passed in query string as ?error=
+  verifyRequest: '/auth/verify-request', // (used for check email message)
+  newUser: null, // If set to null, new users will be directed to their app
+},
 }
 
 export default NextAuth(authOptions)

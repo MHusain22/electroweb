@@ -44,7 +44,6 @@ const Login = () => {
     const { email, password } = user;
     
     if (email.length > 0 && password.length > 0) {
-      // alert("correct");
       try {
         const response = await axios.post("api/users/login", user); //passing the data
         console.log("login Success");
