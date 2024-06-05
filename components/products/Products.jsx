@@ -1,11 +1,13 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import classes from "./Products.module.css";
-import { ProductData } from "../ProductData.js";
+// import { ProductData } from "../ProductData.js";
 import Image from "next/image";
 import Link from "next/link";
 import Button from "../Button/Button";
 import { useDispatch } from "react-redux";
 import { addToCart } from "@/store/slices/CartSlice";
+import { ClipLoader } from 'react-spinners';
+import axios from "axios";
 
 const Products = () => {
   const usedispatch = useDispatch();
@@ -27,6 +29,24 @@ const Products = () => {
       box.scrollLeft = box.scrollLeft + width;
     }
   };
+  const [ProductData, setProductData] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        setIsLoading(true);
+        const response = await axios.get("/api/Products");
+        setProductData(response.data.product);
+      } catch (error) {
+        console.error("Error fetching Products:", error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   return (
     <div className={classes.products}>
@@ -35,34 +55,42 @@ const Products = () => {
           Top Deals of The Day
         </h2>
         <div className={classes.nava}>
-          {ProductData.map((data) => (
-            <div key={data.id} className={classes.product_container}>
-              <div className={classes.col3} key={data.id}>
-                <div className={classes.cen}>
-                  <Link href={`${data.id}`}>
-                    
-                      <Image
-                        className={classes.imgg}
-                        src={data.Image}
-                        alt="image"
-                      />
-                   
-                  </Link>
-                </div>
-                <Link href="/cart">
-                  <button
-                    className={classes.cbtn}
-                    onClick={() => usedispatch(addToCart(data))}
-                  >
-                    Add To Cart
-                  </button>
-                </Link>
-                <h6>{data.category}</h6>
-                <h3>{data.name}</h3>
-                <h3>{`$${data.price}`}</h3>
-              </div>
+          {isLoading ? (
+            <div className={classes.spinner}>
+               <ClipLoader size={50} color={"#123abc"} />
             </div>
-          ))}
+          ) : (
+            <>
+              {ProductData.map((data) => (
+                <div key={data._id} className={classes.product_container}>
+                  <div className={classes.col3} key={data._id}>
+                    <div className={classes.cen}>
+                      <Link href={`${data._id}`}>
+                        <Image
+                          className={classes.imgg}
+                          src={data.image}
+                          alt="image"
+                          width={80}
+                          height={80}
+                        />
+                      </Link>
+                    </div>
+                    <Link href="/cart">
+                      <button
+                        className={classes.cbtn}
+                        onClick={() => usedispatch(addToCart(data))}
+                      >
+                        Add To Cart
+                      </button>
+                    </Link>
+                    <h6>{data.category}</h6>
+                    <h3>{data.name}</h3>
+                    <h3>{`$${data.price}`}</h3>
+                  </div>
+                </div>
+              ))}{" "}
+            </>
+          )}
         </div>
         <div className={classes.ad}>
           <div className={classes.text}>
@@ -92,11 +120,10 @@ const Products = () => {
             <button className={classes.nextbtn} onClick={btnnext}>
               <p>&gt;</p>
             </button>
-
             <div id="productcontainer" className={classes.productcontainer}>
               {ProductData.map((data) => (
                 <div className={classes.cor}>
-                  <Image src={data.Image} alt="" />
+                  <Image src={data.image} width={70} height={70} alt="" />
                   <h3>{data.name}</h3>
                   <h3>{`$${data.price}`}</h3>
                 </div>

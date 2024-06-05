@@ -1,7 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { ProductData } from "@/components/ProductData";
-import { useEffect } from "react";
-
 
 const getLocalCartData = () => {
   let localCartData = localStorage.getItem("CartItems");
@@ -11,6 +9,8 @@ const getLocalCartData = () => {
     return JSON.parse(localCartData);
   }
 };
+
+
 
 const initialState = {
   cart: [],

@@ -89,7 +89,7 @@ const Navbar = () => {
                       className={classes.profileImage}
                     />
                   }
-                {userGoogle?.displayName &&  <p className={classes}>{userGoogle.displayName}</p>}
+                {/* {userGoogle?.displayName &&  <p className={classes}>{userGoogle.displayName}</p>} */}
                 {isAuthenticated &&  <p className={classes}>{user}</p>}
               
               <p className={classes.log} onClick={handleLogout}>

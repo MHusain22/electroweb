@@ -1,6 +1,5 @@
 import classes from "./singleProduct.module.css";
 import { useRouter } from "next/router";
-import { ProductData } from "../ProductData.js";
 import Image from "next/image";
 import { FaStar, FaStarHalf } from "react-icons/fa6";
 import { TbTruckDelivery, TbReplace } from "react-icons/tb";
@@ -10,15 +9,30 @@ import { setIncrease, setDecrease, addToCart } from "@/store/slices/CartSlice";
 import { useDispatch } from "react-redux";
 import Link from "next/link";
 import { IoArrowBackOutline } from "react-icons/io5";
-import { useEffect } from "react";
+import { useEffect,useState } from "react";
+import axios from "axios";
 
 const SingleProduct = () => {
   const usedispatch = useDispatch();
   const router = useRouter();
   const id = router.query.id;
-  //converting string to number with + symbol
-  const filteredProduct = ProductData.filter((product) => product.id === +id);
+  const [ProductData,setProductData] = useState([]);
 
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get("/api/Products");
+        setProductData(response.data.product);
+      } catch (error) {
+        console.error("Error fetching Products:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+
+  const filteredProduct = ProductData.filter((product) => product._id === id);
   
   return (
     <div>
@@ -26,12 +40,13 @@ const SingleProduct = () => {
       <IoArrowBackOutline size={40} className={classes.arrow}/>
       </Link>
       {filteredProduct.map((product) => (
-        <div key={product.id} className={classes.up}>
+        <div key={product._id} className={classes.up}>
           <div className={classes.insideLeft}>
             <Image
-              src={product.Image}
+              src={product.image}
               alt={product.name}
-             // style={{ maxWidth: "100%" }}
+              width={60}
+              height={60}
             />
           </div>
           <div className={classes.insideRight}>

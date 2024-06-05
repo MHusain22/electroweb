@@ -25,6 +25,7 @@ const initialState = {
 }
 const Products = () => {
   const [productDetails, setProductDetails] = useState(initialState);
+  const [update,setUpdate] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -42,6 +43,7 @@ const Products = () => {
         const response = await axios.post('/api/Products',productDetails); //passing the data
         console.log("product saved Success", response.data);
         toast.success("Product saved succesfull");
+        setUpdate(true);
         setProductDetails(initialState);
       } catch (error) {
         toast.error("req failed");
@@ -150,7 +152,7 @@ const Products = () => {
           </form>
         </Paper>
       </Box>
-      <ProductList />
+      <ProductList update={update}/>
     </Container>
   );
 };

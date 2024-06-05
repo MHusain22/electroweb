@@ -1,9 +1,6 @@
 import React from 'react';
 import { Container, Box, Drawer, List, ListItem, ListItemIcon, ListItemText } from '@mui/material';
 import { People, ShoppingCart, Dashboard } from '@mui/icons-material';
-// import Users from '../components/Users';
-// import Products from '../components/Products';
-// import AdminDashboard from '../components/AdminDashboard';
 import Products from './Products';
 
 const Admin = () => {

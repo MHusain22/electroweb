@@ -1,5 +1,4 @@
 import classes from "./Shop.module.css";
-import { ProductData } from "../ProductData.js";
 import Link from "next/link";
 import Image from "next/image";
 import { useDispatch } from "react-redux";
@@ -122,7 +121,6 @@ const Shop = () => {
                   >
                     <button className={classes.cbtn}>Add To Cart</button>
                   </Link>
-                  <h6>{data.type}</h6>
                   <h3>{data.name}</h3>
                   <h3>{`$${data.price}`}</h3>
                 </div>

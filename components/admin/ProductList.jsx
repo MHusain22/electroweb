@@ -9,6 +9,7 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import Image from "next/image";
 import axios from "axios";
+import { MdOutlineDelete } from "react-icons/md";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -30,14 +31,24 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   },
 }));
 
-const ProductList = () => {
+const ProductList = ({update}) => {
 const [productData, setProductData] = useState([]);
+const [isDelete, setIsDelete] = useState(false);
+
+const handleDelete = async(id) => {
+  try {
+    const response = axios.delete(`/api/products/${id}`);
+    console.log(response.data);
+    setIsDelete(true);
+  } catch (error) {
+    console.error("Error Deleting Products:", error);
+  }
+}
+
 useEffect(() => {
-    // Fetch data when the component mounts
     const fetchData = async () => {
       try {
         const response = await axios.get("/api/Products");
-        console.log(response.data);
         setProductData(response.data.product);
         // setIsDelete(false);
       } catch (error) {
@@ -46,7 +57,7 @@ useEffect(() => {
     };
 
     fetchData();
-  }, []); // Empty dependency array ensures the effect runs only once on mount
+  }, [isDelete,update]);
 
 
 
@@ -60,6 +71,7 @@ useEffect(() => {
             <StyledTableCell align="right">Price</StyledTableCell>
             <StyledTableCell align="right">Company</StyledTableCell>
             <StyledTableCell align="right">Category</StyledTableCell>
+            <StyledTableCell align="right"></StyledTableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -74,6 +86,8 @@ useEffect(() => {
               <StyledTableCell align="right">{item.price}</StyledTableCell>
               <StyledTableCell align="right">{item.company}</StyledTableCell>
               <StyledTableCell align="right">{item.category}</StyledTableCell>
+              <StyledTableCell align="right"><MdOutlineDelete onClick={() => handleDelete(item._id)} size={20} /></StyledTableCell>
+              
             </StyledTableRow>
           ))}
         </TableBody>
