@@ -7,24 +7,36 @@ import { useSelector, useDispatch } from "react-redux";
 import { IoMenu } from "react-icons/io5";
 import { login, logout, setUser } from "@/store/slices/authSlice.js";
 import { useRouter } from "next/router";
-import { useSession, signOut } from "next-auth/react";
+import { auth } from "../firebase";
 
 const Navbar = () => {
   const router = useRouter();
   const dispatch = useDispatch();
-  const { data: session, status } = useSession();
+  // const { data: session, status } = useSession();
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
   const user = useSelector((state) => state.auth.user);
   const { totalQuantity } = useSelector((state) => state.cart);
   // console.log(session.user);
   const [collapse, setCollapse] = useState(classes.resp);
+  const [userGoogle, setUserGoogle] = useState(null);
+  // useEffect(() => {
+  //   if (status === "authenticated" && session) {
+  //     dispatch(setUser(session.user.name));
+  //     dispatch(login());
+  //   }
+  // }, [status, session, dispatch]);
 
   useEffect(() => {
-    if (status === "authenticated" && session) {
-      dispatch(setUser(session.user.name));
-      dispatch(login());
-    }
-  }, [status, session, dispatch]);
+    const unsubscribe = auth.onAuthStateChanged((user) => {
+      if (user) {
+        setUserGoogle(user);
+        dispatch(setUser(user.displayName));
+      } else {
+        setUserGoogle(null);
+      }
+    });
+    return () => unsubscribe();
+  }, []);
 
   const handleClick = () => {
     setCollapse((prevState) =>
@@ -37,9 +49,9 @@ const Navbar = () => {
       router.push("/");
        };
 
-  const handleLogout = async () => {
+  const handleLogout =  async() => {
     dispatch(logout());
-    await signOut({ redirect: false });
+    await auth.signOut();
     router.push("/login");
   };
 
@@ -66,18 +78,19 @@ const Navbar = () => {
         </div>
         <hr className={classes.line} />
         <div className={classes.last}>
-          {status === "authenticated" || isAuthenticated ? (
+          {userGoogle || isAuthenticated ? (
             <div className={classes.profileSection}>
-              {session?.user?.image && (
+              {userGoogle?.photoURL && 
                     <Image
-                      src={session.user.image}
+                      src={userGoogle.photoURL}
                       alt="Profile Picture"
                       width={40}
                       height={40}
                       className={classes.profileImage}
                     />
-                  )}
-                <p className={classes}>{user}</p>
+                  }
+                {userGoogle?.displayName &&  <p className={classes}>{userGoogle.displayName}</p>}
+                {isAuthenticated &&  <p className={classes}>{user}</p>}
               
               <p className={classes.log} onClick={handleLogout}>
                 Logout

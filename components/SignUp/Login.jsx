@@ -7,12 +7,14 @@ import { Toaster } from "react-hot-toast";
 import { useDispatch } from "react-redux";
 import { setUser } from "@/store/slices/authSlice";
 import { signIn, useSession } from "next-auth/react";
+import { signInWithPopup } from 'firebase/auth';
+import { auth,provider } from "../firebase";
 
 const Login = () => {
   const router = useRouter();
   const dispatch = useDispatch();
   
-  const { data: session, status } = useSession();
+  // const { data: session, status } = useSession();
   
 
   const [user, setuser] = useState({
@@ -29,15 +31,33 @@ const Login = () => {
     });
   };
 
-  useEffect(() => {
-    if (status === "authenticated") {
-      router.push("/");
-    }
-  }, [status, router]);
+  // useEffect(() => {
+  //   if (status === "authenticated") {
+  //     router.push("/");
+  //   }
+  // }, [status, router]);
 
-  const LoginWthGoogle = () => {
-    signIn("google");
+  const LoginWthGoogle = async() => {
+    try {
+      const result = await signInWithPopup(auth, provider);
+      const { displayName, email } = result.user;
+      const response = await axios.post('/api/users/google', {
+        displayName, email
+      });
+      console.log(response.data);
+      router.push('/'); // Redirect to the dashboard after successful login
+    } catch (error) {
+      console.error("Error during sign-in:", error);
+    }
   }
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged((user) => {
+      if (user) {
+        router.push('/');
+      }
+    });
+    return () => unsubscribe();
+  }, [router]);
 
   const registerHandler = async (e) => {
     e.preventDefault();
