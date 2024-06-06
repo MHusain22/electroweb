@@ -23,10 +23,10 @@ const LoginAdmin = ({setisAdmin}) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     // Replace these credentials with actual validation
-    const adminEmail = 'husain.vijapura@gmail.com';
-        const adminPassword = 'Mhusain@22';
+    const adminEmail = process.env.NEXT_PUBLIC_ADMIN_EMAIL;
+        const adminPassword = process.env.NEXT_PUBLIC_ADMIN_PASSWORD;
 
-    if (email === adminEmail && password === adminPassword) {
+    if (email == adminEmail && password == adminPassword) {
       setisAdmin(true);
     } else {
       setError('Invalid email or password');
