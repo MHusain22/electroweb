@@ -1,4 +1,4 @@
-import React,{useEffect,useState} from "react";
+import React, { useEffect, useState } from "react";
 import { styled } from "@mui/material/styles";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -10,6 +10,8 @@ import Paper from "@mui/material/Paper";
 import Image from "next/image";
 import axios from "axios";
 import { MdOutlineDelete } from "react-icons/md";
+import toast from "react-hot-toast";
+import { Toaster } from "react-hot-toast";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -31,38 +33,38 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   },
 }));
 
-const ProductList = ({update}) => {
-const [productData, setProductData] = useState([]);
-const [isDelete, setIsDelete] = useState(false);
+const ProductList = ({ update }) => {
+  const [productData, setProductData] = useState([]);
+  const [isDelete, setIsDelete] = useState(false);
 
-const handleDelete = async(id) => {
-  try {
-    const response = axios.delete(`/api/products/${id}`);
-    console.log(response.data);
-    setIsDelete(true);
-  } catch (error) {
-    console.error("Error Deleting Products:", error);
-  }
-}
+  const handleDelete = async (id) => {
+    try {
+      const response = axios.delete(`/api/products/${id}`);
+      console.log(response.data);
+      toast.success("Product Deleted");
+      setIsDelete(true);
+    } catch (error) {
+      console.error("Error Deleting Products:", error);
+    }
+  };
 
-useEffect(() => {
+  useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios.get("/api/Products");
         setProductData(response.data.product);
-        // setIsDelete(false);
+        setIsDelete(false);
       } catch (error) {
         console.error("Error fetching Products:", error);
       }
     };
 
     fetchData();
-  }, [isDelete,update]);
-
-
+  }, [isDelete, update]);
 
   return (
     <TableContainer component={Paper}>
+      <Toaster position="top-right" reverseOrder={false} />
       <Table sx={{ minWidth: 700 }} aria-label="customized table">
         <TableHead>
           <TableRow>
@@ -81,13 +83,23 @@ useEffect(() => {
                 {item.name}
               </StyledTableCell>
               <StyledTableCell align="right">
-                <Image src={item.image} width={60} height={60} alt={item.name} />
+                <Image
+                  src={item.image}
+                  width={60}
+                  height={60}
+                  alt={item.name}
+                />
               </StyledTableCell>
               <StyledTableCell align="right">{item.price}</StyledTableCell>
               <StyledTableCell align="right">{item.company}</StyledTableCell>
               <StyledTableCell align="right">{item.category}</StyledTableCell>
-              <StyledTableCell align="right"><MdOutlineDelete onClick={() => handleDelete(item._id)} size={20} /></StyledTableCell>
-              
+              <StyledTableCell align="right">
+                <MdOutlineDelete
+                  style={{ cursor: "pointer" }}
+                  onClick={() => handleDelete(item._id)}
+                  size={20}
+                />
+              </StyledTableCell>
             </StyledTableRow>
           ))}
         </TableBody>

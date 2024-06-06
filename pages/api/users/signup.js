@@ -25,7 +25,6 @@ export default async function handler(req, res) {
       if (existingUser) {
         return res.status(400).json({ error: "Email already exists" });
       }
-
       const hashedPassword = await bcrypt.hash(password, 10);
 
       console.log(hashedPassword);
@@ -38,7 +37,14 @@ export default async function handler(req, res) {
       console.error("Signup failed:", error);
       res.status(500).json({ error: "Signup failed" });
     }
-  } else {
-    res.status(405).json({ error: "Method Not Allowed" });
+  }
+  if (req.method === "GET"){
+    try {
+      const user = await User.find();
+      return res.status(200).json({user});
+    } catch (error) {
+      console.error("Cannot get user Data", error);
+      res.status(500).json({ error: "Cannot get user Data" });
+    }
   }
 }

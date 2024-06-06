@@ -14,6 +14,10 @@ mongoose.connect(process.env.MONGO_URI, {
     if (req.method === "POST"){
       const { displayName, email } = req.body;
       try {
+        const existingUser = await User.findOne({ email });
+        if (existingUser) {
+          return res.status(400).json({ error: "Email already exists" });
+        }
         const user = new User({ username:displayName, email });
         await user.save();
         res.status(200).json({ success: true, user });

@@ -1,6 +1,6 @@
 import React, { useState,useEffect } from "react";
 import classes from "./Signup.module.css";
-import axios from "axios"; //to call api
+import axios from "axios";
 import { useRouter } from "next/router";
 import toast from "react-hot-toast";
 import { Toaster } from "react-hot-toast";
@@ -13,10 +13,6 @@ import { auth,provider } from "../firebase";
 const Login = () => {
   const router = useRouter();
   const dispatch = useDispatch();
-  
-  // const { data: session, status } = useSession();
-  
-
   const [user, setuser] = useState({
     email: "",
     password: "",
@@ -30,12 +26,6 @@ const Login = () => {
       [name]: value,
     });
   };
-
-  // useEffect(() => {
-  //   if (status === "authenticated") {
-  //     router.push("/");
-  //   }
-  // }, [status, router]);
 
   const LoginWthGoogle = async() => {
     try {
@@ -74,10 +64,6 @@ const Login = () => {
         toast.error("Incorrect Password or Email");
         console.log("login failed", error.message);
       }
-    }
-    
-    else{
-      toast.error("User does not exist");
     }
   };
 
