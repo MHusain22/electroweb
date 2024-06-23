@@ -1,18 +1,23 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { ProductData } from "@/components/ProductData";
 
+const isClient = typeof window !== "undefined";
+
 const getLocalCartData = () => {
-  let localCartData = localStorage.getItem("CartItems");
-  if (localCartData == []) {
-    return [];
-  } else {
-    return JSON.parse(localCartData);
+  if (isClient) {
+    let localCartData = localStorage.getItem("CartItems");
+    if (!localCartData || localCartData.length === 0) {
+      return [];
+    } else {
+      return JSON.parse(localCartData);
+    }
   }
+  return [];
 };
 
 const initialState = {
-  cart: [],
-  // cart: localStorage.getItem("CartItems") ? JSON.parse(localStorage.getItem("CartItems")) :,
+  // cart: [],
+  cart: getLocalCartData(),
   filter_products: ProductData,
   products: [],
   totalQuantity: 0,
@@ -27,7 +32,7 @@ const CartSlice = createSlice({
   initialState,
   reducers: {
     addToCart(state, action) {
-      let find = state.cart.findIndex((item) => item.id === action.payload.id);
+      let find = state.cart.findIndex((item) => item._id === action.payload._id);
       if (find >= 0) {
         state.cart[find].quantity = Math.floor(state.cart[find].quantity) + 1;
       } else {
@@ -38,13 +43,13 @@ const CartSlice = createSlice({
 
     removeItem(state, action) {
       console.log(action.payload);
-      state.cart = state.cart.filter((item) => item.id != action.payload);
+      state.cart = state.cart.filter((item) => item._id != action.payload);
     },
 
     setIncrease(state, action) {
       console.log(action.payload);
       state.cart.map((item) => {
-        if (item.id === action.payload) {
+        if (item._id === action.payload) {
           item.quantity = Math.floor(item.quantity) + 1;
         }
       });
@@ -55,7 +60,7 @@ const CartSlice = createSlice({
 
     setDecrease(state, action) {
       state.cart.map((item) => {
-        if (item.id === action.payload && item.quantity != 0) {
+        if (item._id === action.payload && item.quantity != 0) {
           item.quantity = Math.floor(item.quantity) - 1;
         } else{
           console.log("sdsd");

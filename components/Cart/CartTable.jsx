@@ -27,9 +27,9 @@ const CartTable = () => {
   // console.log(cart);
   const handleDecrease = (item) => {
     if(item.quantity>1){
-      dispatch(setDecrease(item.id));
+      dispatch(setDecrease(item._id));
     } else {
-      dispatch(removeItem(item.id));
+      dispatch(removeItem(item._id));
     }
   }
 
@@ -61,7 +61,7 @@ const CartTable = () => {
                 <TableRow key={item.id}>
                   <TableCell>
                     <div className={classes.pd}>
-                      <Image src={item.Image} width={70} alt="" />
+                      <Image src={item.image} width={70} height={70} alt="Image not found" />
                       <p style={{ marginLeft: "1.2em" }}>{item.name}</p>
                     </div>
                   </TableCell>
@@ -71,7 +71,7 @@ const CartTable = () => {
                         -
                       </span>
                       <span className={classes.num}>{item.quantity}</span>
-                      <span onClick={() => dispatch(setIncrease(item.id))}>
+                      <span onClick={() => dispatch(setIncrease(item._id))}>
                         +
                       </span>
                     </div>
