@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { ProductData } from "@/components/ProductData";
 
 const isClient = typeof window !== "undefined";
 
@@ -18,7 +17,7 @@ const getLocalCartData = () => {
 const initialState = {
   // cart: [],
   cart: getLocalCartData(),
-  filter_products: ProductData,
+  filter_products: [],
   products: [],
   totalQuantity: 0,
   totalPrice: 0,
@@ -31,6 +30,10 @@ const CartSlice = createSlice({
   name: "cart",
   initialState,
   reducers: {
+    setProducts(state, action) {
+      state.filter_products = action.payload;
+      state.products = action.payload;
+    },
     addToCart(state, action) {
       let find = state.cart.findIndex((item) => item._id === action.payload._id);
       if (find >= 0) {
@@ -90,9 +93,9 @@ const CartSlice = createSlice({
 
     categoryFilter(state, action) {
       if (action.payload === "ALL") {
-        state.filter_products = ProductData;
+        state.filter_products = state.products;
       } else {
-        state.filter_products = ProductData.filter(
+        state.filter_products = state.products.filter(
           (item) => item.category === action.payload
         );
       }
@@ -100,9 +103,9 @@ const CartSlice = createSlice({
 
     companyFilter(state, action) {
       if (action.payload === "All") {
-        state.filter_products = ProductData;
+        state.filter_products = state.products;
       } else {
-        state.filter_products = ProductData.filter(
+        state.filter_products = state.products.filter(
           (item) => item.company === action.payload
         );
       }
@@ -111,17 +114,17 @@ const CartSlice = createSlice({
     priceFilter(state, action) {
       state.Price = action.payload;
       if (state.Price === 0) {
-        state.filter_products = ProductData.filter(
+        state.filter_products = state.products.filter(
           (item) => +item.price == action.payload
         );
       } else {
-        state.filter_products = ProductData.filter(
+        state.filter_products = state.products.filter(
           (item) => +item.price <= action.payload
         );
       }
     },
     searchFilter(state, action) {
-      state.filter_products = ProductData.filter(
+      state.filter_products = state.products.filter(
         (item) =>
           item.name.toLowerCase().includes(action.payload) ||
           item.name.includes(action.payload) ||
@@ -132,7 +135,7 @@ const CartSlice = createSlice({
 
     clearFilter(state, action) {
       state.Price = 0;
-      state.filter_products = ProductData;
+      state.filter_products = state.products;
     },
 
     cartTotal(state, action) {
@@ -155,6 +158,7 @@ const CartSlice = createSlice({
 
 export default CartSlice.reducer;
 export const {
+  setProducts,
   addToCart,
   removeItem,
   setIncrease,

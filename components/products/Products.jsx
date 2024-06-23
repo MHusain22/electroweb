@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import classes from "./Products.module.css";
-// import { ProductData } from "../ProductData.js";
 import Image from "next/image";
 import Link from "next/link";
 import Button from "../Button/Button";
@@ -44,7 +43,7 @@ const Products = () => {
         setIsLoading(false);
       }
     };
-
+    
     fetchData();
   }, []);
 

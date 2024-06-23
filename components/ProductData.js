@@ -73,3 +73,4 @@ export const ProductData = [
       "The Apple MacBook is a line of sleek and powerful laptops designed and manufactured by Apple Inc. Known for their premium build quality, high-resolution Retina displays, and efficient hardware, MacBook models offer a seamless integration of hardware and software, running on the macOS operating system. With a focus on portability, performance, and a minimalist design, MacBooks are popular among professionals, creatives, and users seeking a reliable and stylish computing experience.",
   },
 ];
+

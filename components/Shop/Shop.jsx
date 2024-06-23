@@ -10,10 +10,12 @@ import {
   priceFilter,
   clearFilter,
   searchFilter,
+  setProducts,
 } from "@/store/slices/CartSlice";
 import { useSelector } from "react-redux";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Navbar from '../header/Navbar'
+import axios from "axios";
 
 const Shop = () => {
   const usedispatch = useDispatch();
@@ -28,6 +30,19 @@ const Shop = () => {
     setSvalue(e.target.value);
     usedispatch(searchFilter(e.target.value));
   };
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get("/api/Products");
+        usedispatch(setProducts(response.data.product));
+      } catch (error) {
+        console.error("Error fetching Products:", error);
+      } 
+    };
+    
+    fetchData();
+  }, []);
 
   return (
     <>
@@ -114,7 +129,7 @@ const Shop = () => {
             {filter_products.map((data) => (
               <div className={classes.row}>
                 <div className={classes.coln} key={data.id}>
-                  <Image src={data.Image} alt="" />
+                  <Image src={data.image} width={120} height={120} alt="" />
                   <Link
                     href="/cart"
                     onClick={() => usedispatch(addToCart(data))}
