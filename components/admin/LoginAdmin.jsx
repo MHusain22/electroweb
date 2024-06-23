@@ -24,7 +24,7 @@ const LoginAdmin = ({setisAdmin}) => {
     e.preventDefault();
     // Replace these credentials with actual validation
     const adminEmail = process.env.NEXT_PUBLIC_ADMIN_EMAIL;
-        const adminPassword = process.env.NEXT_PUBLIC_ADMIN_PASSWORD;
+    const adminPassword = process.env.NEXT_PUBLIC_ADMIN_PASSWORD;
 
     if (email == adminEmail && password == adminPassword) {
       setisAdmin(true);

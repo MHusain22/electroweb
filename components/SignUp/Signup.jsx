@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import classes from "./Signup.module.css";
-import axios from "axios"; //to call api
+import axios from "axios";
 import { useRouter } from "next/router";
 import toast from "react-hot-toast";
 import { Toaster } from "react-hot-toast";
@@ -72,14 +72,9 @@ const Signup = () => {
           id=""
           placeholder="Password"
         />
-        {/* <input type="password" name="reEnterPassword" value={user.reEnterPassword} onChange={handleChange} id="" placeholder='Re-Enter Password' /> */}
         <button type="submit" className={classes.logbtn}>
           SignUp
         </button>
-        <a href="" style={{ textDecoration: "none", color: "inherit" }}>
-          Forget password
-        </a>
-        {/* <p>or sign in with google<span className='gog'><img src={google} width="10%" alt="" /></span></p> */}
       </form>
     </div>
   );

@@ -10,8 +10,6 @@ const getLocalCartData = () => {
   }
 };
 
-
-
 const initialState = {
   cart: [],
   // cart: localStorage.getItem("CartItems") ? JSON.parse(localStorage.getItem("CartItems")) :,

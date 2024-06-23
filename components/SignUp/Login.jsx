@@ -6,9 +6,9 @@ import toast from "react-hot-toast";
 import { Toaster } from "react-hot-toast";
 import { useDispatch } from "react-redux";
 import { setUser } from "@/store/slices/authSlice";
-import { signIn, useSession } from "next-auth/react";
 import { signInWithPopup } from 'firebase/auth';
 import { auth,provider } from "../firebase";
+import { FcGoogle } from "react-icons/fc";
 
 const Login = () => {
   const router = useRouter();
@@ -91,10 +91,7 @@ const Login = () => {
         <button type="submit" className={classes.logbtn}>
           Login
         </button>
-        <a href="" style={{ textDecoration: "none", color: "inherit" }}>
-          Forget password
-        </a>
-        <button onClick={LoginWthGoogle}>Login with google</button>
+        <button className={classes.logbtn} onClick={LoginWthGoogle}>Login with google <FcGoogle /></button>
         {/* <p>or sign in with google<span className='gog'><img src={google} width="10%" alt="" /></span></p> */}
       </form>
     </div>
