@@ -43,7 +43,6 @@ const initialState = {
   isAuthenticated: loadFromLocalStorage('isAuthenticated', false),
   user: loadFromLocalStorage('user', null),
 };
-
 const authSlice = createSlice({
   name: 'auth',
   initialState,
@@ -58,6 +57,7 @@ const authSlice = createSlice({
     setUser: (state, action) => {
       state.user = action.payload;
     },
+   
   },
 });
 

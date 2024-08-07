@@ -19,12 +19,7 @@ const Navbar = () => {
   // console.log(session.user);
   const [collapse, setCollapse] = useState(classes.resp);
   const [userGoogle, setUserGoogle] = useState(null);
-  // useEffect(() => {
-  //   if (status === "authenticated" && session) {
-  //     dispatch(setUser(session.user.name));
-  //     dispatch(login());
-  //   }
-  // }, [status, session, dispatch]);
+
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {

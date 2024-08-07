@@ -5,10 +5,12 @@ import { useRouter } from "next/router";
 import toast from "react-hot-toast";
 import { Toaster } from "react-hot-toast";
 import { useDispatch } from "react-redux";
-import { setUser } from "@/store/slices/authSlice";
+import { setUser,login } from "@/store/slices/authSlice.js";
 import { signInWithPopup } from 'firebase/auth';
 import { auth,provider } from "../firebase";
 import { FcGoogle } from "react-icons/fc";
+
+
 
 const Login = () => {
   const router = useRouter();
@@ -35,6 +37,7 @@ const Login = () => {
         displayName, email
       });
       console.log(response.data);
+      dispatch(login());
       router.push('/'); // Redirect to the dashboard after successful login
     } catch (error) {
       console.error("Error during sign-in:", error);

@@ -8,18 +8,31 @@ import CartTable from "./CartTable";
 import { useDispatch, useSelector } from "react-redux";
 import { cartTotal } from "@/store/slices/CartSlice";
 import { checkout } from "./checkout";
+import { useRouter } from "next/router";
+
 
 const Cart = () => {
+  const router = useRouter();
   const dispatch = useDispatch();
   const { cart, totalPrice, totalQuantity } = useSelector(
     (state) => state.cart
   );
+
   useEffect(() => {
     dispatch(cartTotal());
   }, [cart]);
 
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+  
+  
+
+  const goToLogin = () => {
+    router.push("/login");
+  };
+
   return (
     <>
+    
       <div className={classes.head}>
         <div
           className={classes.container}
@@ -53,18 +66,27 @@ const Cart = () => {
               }`}</span>
             </span>
             <div className={classes.cn}>
-              <button
-                className={classes.btn}
-                onClick={() => {
-                  checkout({
-                    lineItems: [
-                      { price: "price_1OvZ2uSCq7Q0sCcX0LswlYuZ", quantity: 1 },
-                    ],
-                  });
-                }}
-              >
-                Proceed to Checkout
-              </button>
+              {isAuthenticated ? (
+                <button
+                  className={classes.btn}
+                  onClick={() => {
+                    checkout({
+                      lineItems: [
+                        {
+                          price: "price_1OvZ2uSCq7Q0sCcX0LswlYuZ",
+                          quantity: 1,
+                        },
+                      ],
+                    });
+                  }}
+                >
+                  Proceed to Checkout
+                </button>
+              ) : (
+                <button onClick={goToLogin} className={classes.btn}>
+                  Login to Buy
+                </button>
+              )}
             </div>
           </div>
         </div>
