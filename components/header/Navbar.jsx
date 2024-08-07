@@ -25,6 +25,7 @@ const Navbar = () => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
       if (user) {
         setUserGoogle(user);
+        dispatch(login());
         dispatch(setUser(user.displayName));
       } else {
         setUserGoogle(null);
